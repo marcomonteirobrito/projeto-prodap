@@ -11,15 +11,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      salario_fixo: {
+      fixed_salary: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      venda_total: {
+      total_sale: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      comissao: {
+      commission: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

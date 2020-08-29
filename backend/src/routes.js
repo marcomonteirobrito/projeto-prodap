@@ -7,7 +7,7 @@ const routes = new Router();
 
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
-routes.post('/distance', DistanceController.store);
 routes.get('/distance', DistanceController.index);
+routes.post('/distance', DistanceController.store);
 
 export default routes;

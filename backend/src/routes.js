@@ -1,18 +1,13 @@
 import { Router } from 'express';
 
-import User from './app/models/User';
+import UserController from './app/controllers/UserController';
+import DistanceController from './app/controllers/DistanceController';
 
 const routes = new Router();
 
-routes.get('/', async (request, response) => {
-  const user = await User.create({
-    name: 'Diego',
-    salarioFixo: 1000,
-    vendaTotal: 200,
-    comissao: 10
-  });
-
-  return response.json(user);
-});
+routes.get('/users', UserController.index);
+routes.post('/users', UserController.store);
+routes.post('/distance', DistanceController.store);
+routes.get('/distance', DistanceController.index);
 
 export default routes;

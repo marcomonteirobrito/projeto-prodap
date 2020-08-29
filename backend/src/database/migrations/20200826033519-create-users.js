@@ -12,15 +12,19 @@ module.exports = {
         allowNull: false,
       },
       fixed_salary: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
         allowNull: false,
       },
       total_sale: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
         allowNull: false,
       },
       commission: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DECIMAL,
+        allowNull: false,
+      },
+      total_salary: {
+        type: Sequelize.DECIMAL,
         allowNull: false,
       },
       created_at: {

@@ -6,9 +6,10 @@ export default class User extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        salarioFixo: Sequelize.INTEGER,
-        vendaTotal: Sequelize.INTEGER,
-        comissao: Sequelize.INTEGER,
+        fixed_salary: Sequelize.DECIMAL,
+        total_sale: Sequelize.DECIMAL,
+        commission: Sequelize.DECIMAL,
+        total_salary: Sequelize.DECIMAL,
       },
       {
         sequelize,

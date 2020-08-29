@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import Sequelize, { Model } from 'sequelize';
 
-export default class User extends Model {
+export default class Salary extends Model {
   static init(sequelize) {
     super.init(
       {

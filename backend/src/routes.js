@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-import UserController from './app/controllers/UserController';
+import SalaryController from './app/controllers/SalaryController';
 import DistanceController from './app/controllers/DistanceController';
 
 const routes = new Router();
 
-routes.get('/users', UserController.index);
-routes.post('/users', UserController.store);
+routes.get('/salary', SalaryController.index);
+routes.post('/salary', SalaryController.store);
 routes.get('/distance', DistanceController.index);
 routes.post('/distance', DistanceController.store);
 

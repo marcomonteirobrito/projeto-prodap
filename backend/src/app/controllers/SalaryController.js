@@ -1,8 +1,8 @@
-import User from '../models/User';
+import Salary from '../models/Salary';
 
-class UserController {
+class SalaryController {
   async index(request, response) {
-    const userCalculations = await User.findAll();
+    const userCalculations = await Salary.findAll();
 
     return response.json(userCalculations);
 
@@ -13,7 +13,7 @@ class UserController {
 
     const total_salary = (fixed_salary + (total_sale * (commission / 100)));
 
-    const user = await User.create({
+    const user = await Salary.create({
       name, 
       fixed_salary,
       total_sale,
@@ -25,4 +25,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export default new SalaryController();

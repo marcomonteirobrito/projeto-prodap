@@ -9,8 +9,8 @@ export default function Inicio() {
     <>
     <Header />
     <Container>
-       <h1>Seja bem vindo!</h1>
-       <p>Selecione no menu acima a opção desejada.</p>
+       <h1>Desafio Programador fullstack Prodap</h1>
+       <p>Cada questão do desafio está em uma página no cabeçalho</p>
     </Container>
     </>
   );

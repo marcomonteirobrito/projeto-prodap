@@ -9,19 +9,18 @@ class SalaryController {
   }
   
   async store (request, response) {
-    const { name, fixed_salary, total_sale, commission } = request.body;
+    const { name, fixed_salary, total_sale } = request.body;
 
-    const total_salary = (fixed_salary + (total_sale * (commission / 100)));
+    const total_salary = (fixed_salary + (total_sale * 0.15));
 
-    const user = await Salary.create({
+    const newSalary = await Salary.create({
       name, 
       fixed_salary,
       total_sale,
-      commission,
       total_salary
     });
 
-    return response.status(200).json(user);
+    return response.status(200).json(newSalary);
   }
 }
 

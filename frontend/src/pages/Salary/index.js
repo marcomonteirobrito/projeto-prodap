@@ -17,11 +17,12 @@ export default function Salary() {
   });
 
   useEffect(() => {
-    api.get('users')
+    api.get('salary')
       .then(response => {
+
         setHistorySalary(response.data);
       });
-  }, []);
+  }, [formData]);
 
   async function handleInputChange(event) {
     const { name, value } = event.target;
@@ -32,7 +33,7 @@ export default function Salary() {
   async function handleSubmit(event) {
     event.preventDefault();
     
-    await api.post('users', formData)
+    await api.post('salary', formData)
       .then(response => {
         toast.success('Salário calculado com sucesso');
         setFormData({
@@ -52,7 +53,7 @@ export default function Salary() {
       <Container>
           <NewCalcule>
             <div>
-              <header>Realizar novo calculo:</header>
+              <header>Realizar novo calculo</header>
             </div>
             
             <form onSubmit={handleSubmit}>
@@ -106,40 +107,40 @@ export default function Salary() {
 
           <History>
             <div>
-              <header>Historico de calculos:</header>
+              <header>Historico de calculos</header>
             </div>
 
             <Content>
               {historySalary.map(history => (
                 <li key={history.id}>
                 <div>
-                  <label>Nome:</label>
+                  <label>Nome</label>
                   <span>{history.name}</span>
                 </div>
 
                 <div>
-                  <label>Salário:</label>
-                  <span>{history.fixed_salary}</span>
+                  <label>Salário</label>
+                  <span>R${history.fixed_salary}</span>
                 </div>
 
                 <div>
-                  <label>Vendas:</label>
+                  <label>Vendas</label>
                   <span>{history.total_sale}</span>
                 </div>
 
                 <div>
-                  <label>Comissao:</label>
-                  <span>{history.commission}%</span>
+                  <label>Comissao</label>
+                  <span>15%</span>
                 </div>
 
                 <div>
-                  <label>Total:</label>
+                  <label>Total</label>
                   <span>{history.total_salary}</span>
                 </div>
              
 
                 <div>
-                  <label>Realizado em:</label>
+                  <label>Realizado em</label>
                   <span>{moment(history.createdAt).format('DD/MM/YYYY')}</span>
                 </div>
                 </li>

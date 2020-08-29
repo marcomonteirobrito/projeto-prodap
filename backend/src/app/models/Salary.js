@@ -6,10 +6,9 @@ export default class Salary extends Model {
     super.init(
       {
         name: Sequelize.STRING,
-        fixed_salary: Sequelize.DECIMAL,
-        total_sale: Sequelize.DECIMAL,
-        commission: Sequelize.DECIMAL,
-        total_salary: Sequelize.DECIMAL,
+        fixed_salary: Sequelize.DOUBLE,
+        total_sale: Sequelize.DOUBLE,
+        total_salary: Sequelize.DOUBLE,
       },
       {
         sequelize,

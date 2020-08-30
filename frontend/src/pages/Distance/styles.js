@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { lighten, darken } from 'polished';
 
 export const Container = styled.div`
-  height: 100%;
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;

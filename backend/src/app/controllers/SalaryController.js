@@ -5,10 +5,9 @@ class SalaryController {
     const userCalculations = await Salary.findAll();
 
     return response.json(userCalculations);
-
   }
-  
-  async store (request, response) {
+
+  async store(request, response) {
     const { name, fixedSalary, totalSale } = request.body;
 
     const fixed_salary = Number(fixedSalary);
@@ -17,7 +16,7 @@ class SalaryController {
     const total_salary = (fixed_salary + (total_sale * 0.15));
 
     const newSalary = await Salary.create({
-      name, 
+      name,
       fixed_salary,
       total_sale,
       total_salary
@@ -36,7 +35,7 @@ class SalaryController {
       force: true
     });
 
-    return response.status(200).json({ response: 'Deletado com sucesso'});
+    return response.status(200).json({ response: 'Deletado com sucesso' });
   }
 }
 

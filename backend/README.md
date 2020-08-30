@@ -23,7 +23,7 @@
 
 Execute o comando ```npm install``` na raiz da pasta do projeto frontend para instalar as dependências.  
 <div align="center" >
-<img alt="npminstall" src="image/npminstall2.PNG"> 
+<img alt="npminstall" src="image/npmInstall2.PNG"> 
 </div>
 
 Após executado o código acima, execute o comando ```npm start``` na raiz do projeto. 

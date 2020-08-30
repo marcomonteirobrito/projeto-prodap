@@ -7,11 +7,11 @@ import { Container } from './styles';
 export default function Inicio() {
   return (
     <>
-    <Header />
-    <Container>
-       <h1>Desafio Programador fullstack Prodap</h1>
-       <p>Cada questão do desafio está em uma página no cabeçalho</p>
-    </Container>
+      <Header />
+      <Container>
+        <h1>Desafio Programador fullstack Prodap</h1>
+        <p>Cada questão do desafio está em uma página no cabeçalho</p>
+      </Container>
     </>
   );
 }

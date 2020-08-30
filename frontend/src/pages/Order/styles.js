@@ -1,74 +1,75 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
 
 export const Container = styled.div`
   display: flex;
   height: 80%;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 `;
 
-export const Main = styled.div`
+
+export const Input = styled.div`
+  display: flex;
   background: var(--color-content);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 500px;
-  height: 300px;
+  margin-right: 100px;
   border-radius: 8px;
-
-  label {
-    font-size: 24px;
-  }
-
-  span {
-    font-size: 18px;
-  }
-`;
-
-export const GetAlarm = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: red;
   width: 400px;
-  height: 100px;
-  margin-bottom: 30px;
-  border-radius: 8px;
+  font-size: 24px;
 
-  span {
-    font-size: 24px;
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 180px;
+    align-items: center;
+    justify-content: space-between;
+
   }
-`;
-
-export const UpdateAlarm = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  padding: 10px;
 
   input {
-    border-radius: 8px;
-    height: 40px;
-    width: 70px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    font-size: 16px;
+    width: 100px;
+    height: 50px;
     text-align: center;
+    border-radius: 8px;
+    background: var(--color-input);
+  }
+
+  button {
+    width: 100px;
+    height: 35px;
+    background: var(--color-button);
+    border-radius: 8px;
+
+    &:hover{
+      background: ${lighten(0.09, 'orange')}
+    }
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: var(--color-content);
+  width: 100px;
+  text-align: center;
+  border-radius: 8px;
+  height: 300px;
+  padding: 15px;
+  
+  li {
+    list-style-type: none;
   }
 
   button {
     width: 70px;
-    height: 30px;
+    height: 25px;
+    background: var(--color-button);
     border-radius: 8px;
-    color: var(--color-text-header);
-    background: var(--color-header);
+    margin-bottom: 15px;
+
+    &:hover{
+      background: ${lighten(0.09, 'orange')}
+    }
   }
-
 `;
-
-

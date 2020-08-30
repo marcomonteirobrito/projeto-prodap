@@ -39,7 +39,7 @@ export default function Salary() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    
+
     await api.post('salary', formData)
       .then(response => {
         toast.success('Salário calculado com sucesso');
@@ -67,88 +67,88 @@ export default function Salary() {
     <>
       <Header />
       <Container>
-          <header>Realizar novo calculo</header>
-          <NewCalcule>
-            <form onSubmit={handleSubmit}>
-                <div> 
-                  <label>Nome</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange} 
-                  />
-                </div>
-                
-                <div>
-                  <label>Total em vendas</label>
-                  <input
-                    type='text'
-                    name='totalSale'
-                    value={formData.totalSale}
-                    onChange={handleInputChange}
-                  />
-                </div>
+        <header>Realizar novo calculo</header>
+        <NewCalcule>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Nome</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </div>
+
+            <div>
+              <label>Total em vendas</label>
+              <input
+                type='text'
+                name='totalSale'
+                value={formData.totalSale}
+                onChange={handleInputChange}
+              />
+            </div>
 
 
-                <div>
-                  <label>Salário fixo</label>
-                  <input
-                    type='text'
-                    name='fixedSalary'
-                    value={formData.fixedSalary}
-                    onChange={handleInputChange}
-                  />
-                </div>
+            <div>
+              <label>Salário fixo</label>
+              <input
+                type='text'
+                name='fixedSalary'
+                value={formData.fixedSalary}
+                onChange={handleInputChange}
+              />
+            </div>
 
-                <div>
-                  <button>Calcular</button>
-                </div>           
-            </form>
-          </NewCalcule>
+            <div>
+              <button>Calcular</button>
+            </div>
+          </form>
+        </NewCalcule>
 
-     
-          <header>Historico de calculos</header>
-          <History>
-              {historySalary.map(history => (
-                <li key={history.id}>
-                <div className='name'>
-                  <label>Nome</label>
-                  <span>{history.name}</span>
-                </div>
 
-                <div className='salary'>
-                  <label>Salário</label>
-                  <span>{history.salaryFixedFormatted}</span>
-                </div>
+        <header>Historico de calculos</header>
+        <History>
+          {historySalary.map(history => (
+            <li key={history.id}>
+              <div className='name'>
+                <label>Nome</label>
+                <span>{history.name}</span>
+              </div>
 
-                <div className='sale'>
-                  <label>Vendas</label>
-                  <span>{history.totalSaleFormatted}</span>
-                </div>
+              <div className='salary'>
+                <label>Salário</label>
+                <span>{history.salaryFixedFormatted}</span>
+              </div>
 
-                <div className='commission'>
-                  <label>Comissao</label>
-                  <span>15%</span>
-                </div>
+              <div className='sale'>
+                <label>Vendas</label>
+                <span>{history.totalSaleFormatted}</span>
+              </div>
 
-                <div className='total'>
-                  <label>Total</label>
-                  <span>{history.totalSalaryFormatted}</span>
-                </div>
-             
+              <div className='commission'>
+                <label>Comissao</label>
+                <span>15%</span>
+              </div>
 
-                <div className='creatAt'>
-                  <label>Realizado em</label>
-                  <span>{moment(history.createdAt).format('DD/MM/YYYY')}</span>
-                </div>
-                
-                  <span onClick={() => handleDelete(history.id)}>
-                    <FaTrash size={20} color={'red'} />
-                  </span>
-                </li>
-              ))}           
-          </History>
+              <div className='total'>
+                <label>Total</label>
+                <span>{history.totalSalaryFormatted}</span>
+              </div>
+
+
+              <div className='creatAt'>
+                <label>Realizado em</label>
+                <span>{moment(history.createdAt).format('DD/MM/YYYY')}</span>
+              </div>
+
+              <span onClick={() => handleDelete(history.id)}>
+                <FaTrash size={20} color={'red'} />
+              </span>
+            </li>
+          ))}
+        </History>
       </Container>
     </>
   );

@@ -18,7 +18,6 @@ export const Main = styled.div`
   width: 700px;
   max-width: 800px;
   border-radius: 8px;
-  color: #f9f9f9;
 
   form {
     display: flex;
@@ -31,8 +30,9 @@ export const Main = styled.div`
 export const Input = styled.div`
   width: 600px;
   height: 250px;
-  background: ${lighten(0.07, '#0A122A')};
+  background: var(--color-content);
   border-radius: 8px;
+
 
   label {
     font-size: 24px;
@@ -52,6 +52,7 @@ export const Input = styled.div`
     margin-bottom: 20px;
     border-radius: 8px;
     text-align: center;
+    background: var(--color-input);
 
     &:hover{
       background: ${darken(0.09, '#f9f9f9')}
@@ -59,9 +60,15 @@ export const Input = styled.div`
   }
 
   button {
-    width: 100px;
-    height: 35px;
+    width: 150px;
+    height: 40px;
+    background: var(--color-button);
     border-radius: 8px;
+    margin-bottom: 15px;
+
+    &:hover{
+      background: ${lighten(0.09, 'orange')}
+    }
   }
 
 `;
@@ -74,10 +81,8 @@ export const Result = styled.div`
   height: 100px;
   margin-top: 10px;
   margin-bottom: 15px;
-  background: ${lighten(0.07, '#0A122A')};
-  color: #f9f9f9;
+  background: var(--color-content);
   border-radius: 8px;
-  
 
   label {
     font-size: 24px;

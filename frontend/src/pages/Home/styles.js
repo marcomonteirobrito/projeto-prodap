@@ -7,6 +7,6 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   font-size: 24px;
-
+  color: var(--color-text);
 `;
 

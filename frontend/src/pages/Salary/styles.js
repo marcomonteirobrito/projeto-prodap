@@ -11,11 +11,13 @@ export const Container = styled.div`
 
   header {
     font-size: 32px;
+    color: var(--color-text);
+    margin-bottom: 15px;
   }
 `;
 
 export const NewCalcule = styled.div`
-  background: ${lighten(0.07, '#0A122A')};;
+  background: var(--color-content);
   margin-bottom: 30px;
   width: 500px;
   height: 300px;
@@ -26,7 +28,6 @@ export const NewCalcule = styled.div`
   form {
     width: 450px;
     height: 250px;
-    color: #f9f9f9;
   }
 
   label {
@@ -43,19 +44,21 @@ export const NewCalcule = styled.div`
 
   input {
     margin-bottom: 10px;
-    background: #f9f9f9;
+    background: var(--color-input);
     height: 30px;
+    border-radius: 8px;
 
     &:hover{
-      background: ${darken(0.09, '#f9f9f9')}
+      background: ${darken(0.08, '#c9c9c9')}
     }
   }
 
   button {
-    margin-top: 15px;
+    margin-top: 10px;
     width: 150px;
-    height: 25px;
-    background: orange;
+    height: 35px;
+    background: var(--color-button);
+    border-radius: 8px;
 
     &:hover{
       background: ${lighten(0.09, 'orange')}
@@ -86,9 +89,7 @@ export const History = styled.div`
     justify-content: space-between;
     padding: 5px;
     width: 700px;
-    background: #f9f9f9;
-    color: #0A122A;
-    margin-top: 15px;
+    background: var(--color-content);
     border-radius: 8px;
 
     &:hover{

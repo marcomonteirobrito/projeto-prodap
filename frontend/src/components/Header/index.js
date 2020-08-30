@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiThermometer } from 'react-icons/fi';
-import { MdAlarm, MdHistory } from 'react-icons/md';
+import { FaCalculator, FaMapMarkerAlt, FaSortAmountUpAlt } from 'react-icons/fa';
 
 import { Container } from './styles';
 
@@ -11,21 +10,21 @@ export default function Header() {
       <nav>
           <Link to='/salary'>
             <span>
-              <FiThermometer />
+              <FaCalculator />
             </span>
             <strong>Calcular Salário</strong>
           </Link>
   
           <Link to='/distance'>
             <span>
-              <MdHistory />
+              <FaMapMarkerAlt />
             </span>
             <strong>Calcular distância</strong>
           </Link>
 
           <Link to='/order'>
             <span>
-              <MdAlarm />
+              <FaSortAmountUpAlt />
             </span>
             <strong>Ordenar</strong>
           </Link>

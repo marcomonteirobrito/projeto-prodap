@@ -1,44 +1,85 @@
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 import Header from '../../components/Header';
 
-import { Container, Main } from './styles';
+import { Container, Main, Input, Result } from './styles';
 
 export default function Distance() {
-  const [historico, setHistorico] = useState([]);
+  const [distance, setDistance] = useState([]);
+  const [formData, setFormData] = useState({
+    spot1: '',
+    spot2: '',
+  });
 
-  /*useEffect(() => {
-    api.get('temperatura-historico')
+  async function handleInputChange(event) {
+    const { name, value } = event.target;
+
+    setFormData({ ...formData, [name]: value });
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    
+    await api.post('distance', formData)
       .then(response => {
-        setHistorico(response.data);
+        toast.success('Distância calculada com sucesso');
+        setFormData({
+          spot1: '',
+          spot2: '',
+        });
+        setDistance(response.data.distance.toFixed(4));
+      }).catch(error => {
+        toast.error('Falha no calculo, tente novamente');
       });
-  }, []);*/
+  }
 
   return (
     <>
       <Header />
       <Container>
         <Main> 
-          
-            <li >
+          <Input>
+            <form onSubmit={handleSubmit}>
+            <div>
               <div>
-                <strong>Temperatura C°</strong>
-                <p></p>
+                <label>Insira os valores de x1 e y1</label>
               </div>
+              
+              <div>
+                <input 
+                  type='text'
+                  name='spot1'
+                  value={formData.spot1}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
 
+            <div>
               <div>
-                <strong>Status</strong>
-                <p></p>
+                <label>Insira os valores de x2 e y2</label>
               </div>
+              
+              <div>
+                <input 
+                  type='text'
+                  name='spot2'
+                  value={formData.spot2}
+                  onChange={handleInputChange}
+                  />
+              </div>   
+            </div>
 
-              <div>
-                <strong>Data</strong>
-                <p></p>
-              </div>
-            </li>
-          
+            <button type='submit'>Calcular</button>
+            </form>
+          </Input>
+
+          <Result>
+            <label>Distância calculada</label>
+            <span>{distance}</span>
+          </Result>
         </Main>
       </Container>
     </>

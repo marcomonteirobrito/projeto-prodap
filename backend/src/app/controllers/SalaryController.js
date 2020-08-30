@@ -9,7 +9,10 @@ class SalaryController {
   }
   
   async store (request, response) {
-    const { name, fixed_salary, total_sale } = request.body;
+    const { name, fixedSalary, totalSale } = request.body;
+
+    const fixed_salary = Number(fixedSalary);
+    const total_sale = Number(totalSale);
 
     const total_salary = (fixed_salary + (total_sale * 0.15));
 
@@ -21,6 +24,19 @@ class SalaryController {
     });
 
     return response.status(200).json(newSalary);
+  }
+
+  async delete(request, response) {
+    const { deleteSalaryId } = request.params;
+
+    await Salary.destroy({
+      where: {
+        id: deleteSalaryId
+      },
+      force: true
+    });
+
+    return response.status(200).json({ response: 'Deletado com sucesso'});
   }
 }
 

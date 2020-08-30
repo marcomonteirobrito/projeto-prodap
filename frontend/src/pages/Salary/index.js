@@ -1,28 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import moment from 'moment';
+import { FaTrash } from 'react-icons/fa';
 
+import { formatPrice } from '../../util/format';
 import api from '../../services/api';
 import Header from '../../components/Header';
 
-import { Container, NewCalcule, History, Content  } from './styles';
+import { Container, NewCalcule, History } from './styles';
 
 export default function Salary() {
   const [historySalary, setHistorySalary] = useState([]);
+  const [deleted, setDeleted] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     fixed_salary: '',
-    total_sale: '',
-    commission: ''
+    total_sale: ''
   });
 
   useEffect(() => {
     api.get('salary')
       .then(response => {
-
-        setHistorySalary(response.data);
+        const data = response.data.map(history => ({
+          ...history,
+          totalSaleFormatted: formatPrice(history.total_sale),
+          salaryFixedFormatted: formatPrice(history.fixed_salary),
+          totalSalaryFormatted: formatPrice(history.total_salary),
+        }));
+        setHistorySalary(data);
       });
-  }, [formData]);
+  }, [formData, deleted]);
 
   async function handleInputChange(event) {
     const { name, value } = event.target;
@@ -38,12 +45,21 @@ export default function Salary() {
         toast.success('Salário calculado com sucesso');
         setFormData({
           name: '',
-          fixed_salary: '',
-          total_sale: '',
-          commission: ''
+          fixedSalary: '',
+          totalSale: ''
         })
       }).catch(error => {
-        toast.error('Falha no calculo, tente novamente');
+        toast.error(`${error.response.data.error}`);
+      });
+  }
+
+  async function handleDelete(id) {
+    await api.delete(`salary/${id}`)
+      .then(response => {
+        toast.success('Deletado com sucesso');
+        setDeleted(id);
+      }).catch(error => {
+        toast.error('Não foi possível executar a ação, tente novamente')
       });
   }
 
@@ -51,13 +67,9 @@ export default function Salary() {
     <>
       <Header />
       <Container>
+          <header>Realizar novo calculo</header>
           <NewCalcule>
-            <div>
-              <header>Realizar novo calculo</header>
-            </div>
-            
             <form onSubmit={handleSubmit}>
-              <div>
                 <div> 
                   <label>Nome</label>
                   <input
@@ -71,82 +83,71 @@ export default function Salary() {
                 <div>
                   <label>Total em vendas</label>
                   <input
-                    type='number'
-                    name='total_sale'
-                    value={formData.total_sale}
+                    type='text'
+                    name='totalSale'
+                    value={formData.totalSale}
                     onChange={handleInputChange}
                   />
                 </div>
-              </div>
 
-              <div>
+
                 <div>
                   <label>Salário fixo</label>
                   <input
-                    type='number'
-                    name='fixed_salary'
-                    value={formData.fixed_salary}
+                    type='text'
+                    name='fixedSalary'
+                    value={formData.fixedSalary}
                     onChange={handleInputChange}
                   />
                 </div>
 
                 <div>
-                  <label>Comissão em %</label>
-                  <input 
-                    type='number'
-                    name='commission'
-                    value={formData.commission}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <button type='submit'>Calcular</button>
-              </div>
+                  <button>Calcular</button>
+                </div>           
             </form>
           </NewCalcule>
 
+     
+          <header>Historico de calculos</header>
           <History>
-            <div>
-              <header>Historico de calculos</header>
-            </div>
-
-            <Content>
               {historySalary.map(history => (
                 <li key={history.id}>
-                <div>
+                <div className='name'>
                   <label>Nome</label>
                   <span>{history.name}</span>
                 </div>
 
-                <div>
+                <div className='salary'>
                   <label>Salário</label>
-                  <span>R${history.fixed_salary}</span>
+                  <span>{history.salaryFixedFormatted}</span>
                 </div>
 
-                <div>
+                <div className='sale'>
                   <label>Vendas</label>
-                  <span>{history.total_sale}</span>
+                  <span>{history.totalSaleFormatted}</span>
                 </div>
 
-                <div>
+                <div className='commission'>
                   <label>Comissao</label>
                   <span>15%</span>
                 </div>
 
-                <div>
+                <div className='total'>
                   <label>Total</label>
-                  <span>{history.total_salary}</span>
+                  <span>{history.totalSalaryFormatted}</span>
                 </div>
              
 
-                <div>
+                <div className='creatAt'>
                   <label>Realizado em</label>
                   <span>{moment(history.createdAt).format('DD/MM/YYYY')}</span>
                 </div>
+                
+                  <span onClick={() => handleDelete(history.id)}>
+                    <FaTrash size={20} color={'red'} />
+                  </span>
                 </li>
-              ))}
-              
-            </Content>
+              ))}           
           </History>
       </Container>
     </>

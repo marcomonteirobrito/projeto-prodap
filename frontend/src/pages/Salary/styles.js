@@ -1,82 +1,99 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { lighten, darken } from 'polished';
 
 export const Container = styled.div`
   display: flex;
   height: 100%;
+  margin-top: 100px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  header {
+    font-size: 32px;
+  }
 `;
 
-
 export const NewCalcule = styled.div`
-  background: #f9f9f9;
+  background: ${lighten(0.07, '#0A122A')};;
   margin-bottom: 30px;
   width: 500px;
   height: 300px;
   padding: 30px;
   border-radius: 8px;
-
-  header {
-    font-size: 32px;
-    margin-bottom: 15px;
-  }
+  padding: 25px;
 
   form {
-    display: flex;
-    justify-content: space-between;
+    width: 450px;
+    height: 250px;
+    color: #f9f9f9;
   }
 
   label {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   div {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   input {
-    border-radius: 8px;
-    width: 200px;
-    height: 32px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    height: 30px;
+
+    &:hover{
+      background: ${darken(0.09, '#f9f9f9')}
+    }
   }
 
   button {
-    font-size: 24px;
-    background: #999;
-    text-align: center;
-    border-radius: 8px;
-    height: 32px;
+    margin-top: 15px;
+    width: 150px;
+    height: 25px;
+    background: orange;
+
+    &:hover{
+      background: ${lighten(0.09, 'orange')}
+    }
   }
-
-
 `;
 
 export const History = styled.div`
-  background: #f9f9f9;
+  background: ${lighten(0.07, '#0A122A')};
   margin-bottom: 30px;
-  width: 690px;
-  height: 300px;
-  padding: 30px;
+  width: 800px;
+  height: 100%;
+  padding: 15px 50px;;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
 
   header {
     font-size: 32px;
     margin-bottom: 15px;
   }
-`;
-
-export const Content = styled.div`
   label {
     font-size: 20px;
   }
 
   li {
     display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    width: 700px;
+    background: #f9f9f9;
+    color: #0A122A;
+    margin-top: 15px;
+    border-radius: 8px;
+
+    &:hover{
+      background: ${darken(0.09, '#f9f9f9')}
+    }
   }
 
   div {
@@ -84,5 +101,5 @@ export const Content = styled.div`
     flex-direction: column;
     margin-right: 24px;
   }
-
 `;
+

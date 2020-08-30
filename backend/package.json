@@ -15,7 +15,8 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "sequelize": "^6.3.4",
-    "sqlite3": "^5.0.0"
+    "sqlite3": "^5.0.0",
+    "yup": "^0.29.3"
   },
   "devDependencies": {
     "sequelize-cli": "^6.2.0",

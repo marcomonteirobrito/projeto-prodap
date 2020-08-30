@@ -91,6 +91,7 @@ export const History = styled.div`
     width: 700px;
     background: var(--color-content);
     border-radius: 8px;
+    margin-bottom: 15px;
 
     &:hover{
       background: ${darken(0.09, '#f9f9f9')}

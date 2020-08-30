@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "dev:debug": "nodemon --inspect src/server.js"
+    "dev:debug": "nodemon --inspect src/server.js",
+    "dev": "nodemon src/index.js --ignore __tests__",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
     "sequelize": "^6.3.4",
@@ -19,6 +22,7 @@
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "jest": "^26.4.2",
     "sequelize-cli": "^6.2.0",
     "sucrase": "^3.15.0"
   }

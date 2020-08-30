@@ -6,7 +6,7 @@
 ## Telas aplicação web 
 
 <p align="center">
-	<img src="image/prodap.gif" width="600" height="400"/>
+	<img src="image/prodap.gif" width="700" height="350"/>
 </p>
 
 <h2><strong>:satellite: Algumas das tecnologias utilizadas*</strong></h2>

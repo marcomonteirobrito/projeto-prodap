@@ -1,4 +1,4 @@
-const { Salary } = require('../../src/app/models/Salary');
+import Salary from '../../src/app/models/Salary';
 
 describe('Calculo de salário;', () => {
   it('A rota /salary com método post deve retornar um JSON quando um novo calculo de salário for criado', 
